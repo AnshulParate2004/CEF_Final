@@ -1,12 +1,13 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learn Shapes - Amchi Shala</title>
-  <link rel="stylesheet" href="../styles/stylesheet.css">
-  <link rel="stylesheet" href="../styles/StarfallvBP.css">
+  <link rel="stylesheet" href="{% static 'styles/stylesheet.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/StarfallvBP.css' %}">
   <style>
     body {
       margin: 0;
@@ -84,13 +85,27 @@
       color: #003300;
       margin-top: 40px;
     }
+    .back-button {
+      margin: 20px;
+      padding: 10px 20px;
+      background-color: #006400;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .back-button:hover {
+      background-color: #004d00;
+    }
   </style>
 </head>
 <body>
   <header>
-    <img src="../images/Logo.png" alt="Logo">
+    <img src="{% static 'images/Logo.png' %}" alt="Logo">
     <h1>Amchi Shala - Learn Shapes</h1>
   </header>
+  <button class="back-button" onclick="history.back()">← Go Back</button>
 
   <div class="main">
     <h2>Understand Shapes with Fun and Easy Videos!</h2>
@@ -99,54 +114,48 @@
       <div class="video-box">
         <h3>Circle</h3>
         <p>Learn how to identify and draw a circle with examples from everyday life.</p>
-        <video controls poster="../thumbnails/circle.png">
-          <source src="../media/circle.mp4" type="video/mp4">
-          Your browser does not support the video tag.
+        <video onclick="openFullscreen(this)" controls poster="{% static 'thumbnails/circle.jpeg' %}">
+          <source src="{% static 'media/Circle Song.mp4' %}" type="video/mp4">
         </video>
       </div>
 
       <div class="video-box">
         <h3>Square</h3>
         <p>See how squares look, where they appear around us, and how to draw them!</p>
-        <video controls poster="../thumbnails/square.png">
-          <source src="../media/square.mp4" type="video/mp4">
-          Your browser does not support the video tag.
+        <video onclick="openFullscreen(this)" controls poster="{% static 'thumbnails/square.jpeg' %}">
+          <source src="{% static 'media/Square Song.mp4' %}" type="video/mp4">
         </video>
       </div>
 
       <div class="video-box">
         <h3>Triangle</h3>
         <p>Triangles are everywhere! Learn the shape and explore fun examples.</p>
-        <video controls poster="../thumbnails/triangle.png">
-          <source src="../media/triangle.mp4" type="video/mp4">
-          Your browser does not support the video tag.
+        <video onclick="openFullscreen(this)" controls poster="{% static 'thumbnails/triangle.jpeg' %}">
+          <source src="{% static 'media/Triangle Song.mp4' %}" type="video/mp4">
         </video>
       </div>
 
       <div class="video-box">
         <h3>Rectangle</h3>
         <p>Discover the rectangle shape through storytelling and visuals.</p>
-        <video controls poster="../thumbnails/rectangle.png">
-          <source src="../media/rectangle.mp4" type="video/mp4">
-          Your browser does not support the video tag.
+        <video onclick="openFullscreen(this)" controls poster="{% static 'thumbnails/rectangle.jpeg' %}">
+          <source src="{% static 'media/Rectangle Song.mp4' %}" type="video/mp4">
         </video>
       </div>
 
       <div class="video-box">
         <h3>Star Shape</h3>
         <p>Twinkle with this star-shaped learning session designed for kids!</p>
-        <video controls poster="../thumbnails/star.png">
-          <source src="../media/star.mp4" type="video/mp4">
-          Your browser does not support the video tag.
+        <video onclick="openFullscreen(this)" controls poster="{% static 'thumbnails/star.jpeg' %}">
+          <source src="{% static 'media/Star Song.mp4' %}" type="video/mp4">
         </video>
       </div>
 
       <div class="video-box">
         <h3>Heart Shape</h3>
         <p>Learn the heart shape with a lovely animated guide to help kids relate emotionally.</p>
-        <video controls poster="../thumbnails/heart.png">
-          <source src="../media/heart.mp4" type="video/mp4">
-          Your browser does not support the video tag.
+        <video onclick="openFullscreen(this)" controls poster="{% static 'thumbnails/heart.jpeg' %}">
+          <source src="{% static 'media/Heart Song.mp4' %}" type="video/mp4">
         </video>
       </div>
 
@@ -156,5 +165,17 @@
   <footer>
     Amchi Shala © 2025. All rights reserved.
   </footer>
+
+  <script>
+    function openFullscreen(videoElement) {
+      if (videoElement.requestFullscreen) {
+        videoElement.requestFullscreen();
+      } else if (videoElement.webkitRequestFullscreen) {
+        videoElement.webkitRequestFullscreen();
+      } else if (videoElement.msRequestFullscreen) {
+        videoElement.msRequestFullscreen();
+      }
+    }
+  </script>
 </body>
 </html>
