@@ -70,10 +70,21 @@
     button:hover {
       background-color: #218838;
     }
+    .google-btn {
+      background-color: #db4437;
+      margin-top: 15px;
+    }
+    .google-btn:hover {
+      background-color: #c1351d;
+    }
     .note {
       font-size: 14px;
       margin-top: 25px;
       color: #555;
+    }
+    .error-messages {
+      color: red;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -85,14 +96,24 @@
       <input type="text" placeholder="Username" name="username" required>
       <input type="password" placeholder="Password" name="password" required>
       <button type="submit">Sign In</button>
+
       {% if messages %}
-        <div style="color: red; margin-top: 10px;">
+        <div class="error-messages">
           {% for message in messages %}
             {{ message }}
           {% endfor %}
         </div>
       {% endif %}
     </form>
+
+    <!-- Google Sign In Button -->
+    <div>
+      <a href="{% url 'social:begin' 'google-oauth2' %}?next=/welcome/" style="text-decoration: none;">
+        <button type="button" class="google-btn">
+          Sign in with Google
+        </button>
+      </a>
+    </div>
   </div>
 </body>
 </html>
